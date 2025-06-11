@@ -1,0 +1,40 @@
+# Fichier : .github/workflows/scrape.yml
+name: Mise à jour du contexte du Chatbot
+
+on:
+  schedule:
+    # S'exécute tous les jours à 2h du matin (format cron)
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Permet de le lancer manuellement depuis l'onglet Actions de GitHub
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Récupère le code de votre dépôt
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Met en place Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # 3. Installe les dépendances pour le script de scraping
+      - name: Install dependencies
+        run: npm install node-fetch cheerio
+
+      # 4. Exécute le script de scraping qui va modifier js/contexte.js
+      - name: Run scraper
+        run: node scraper/scrape.js
+
+      # 5. Commit et pousse les changements (le nouveau contexte.js)
+      - name: Commit and push if there are changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add js/contexte.js
+          # Vérifie s'il y a des changements à commiter
+          git diff --staged --quiet || git commit -m "Mise à jour automatique du contexte du chatbot"
+          git push
