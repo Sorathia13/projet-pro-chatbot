@@ -1,8 +1,8 @@
 // Fichier : script.js
 
 // --- Configuration ---
-// La clé API est maintenant importée depuis config.js
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+// La clé API est maintenant importée depuis config.js comme variable globale
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${window.API_KEY}`;
 
 // --- Éléments du DOM ---
 const sendBtn = document.getElementById('send-btn');
