@@ -1,9 +1,8 @@
 // Fichier : script.js
 
 // --- Configuration ---
-// REMPLACEZ "VOTRE_CLE_API_GEMINI" PAR VOTRE VRAIE CLÉ
-const API_KEY = "VOTRE_CLE_API_GEMINI"; 
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyDUfTaEfmt0K6eDHA_3cV1sVGJcdQej6sc`;
+// La clé API est maintenant importée depuis config.js
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
 // --- Éléments du DOM ---
 const sendBtn = document.getElementById('send-btn');

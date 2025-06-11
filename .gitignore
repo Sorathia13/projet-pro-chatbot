@@ -1,0 +1,20 @@
+# Fichiers de configuration contenant des informations sensibles
+js/config.js
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Dossiers de dépendances
+node_modules/
+
+# Fichiers de build
+dist/
+build/
+
+# Fichiers d'environnement
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
