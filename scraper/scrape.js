@@ -5,7 +5,7 @@ const fs = require('fs');           // Pour écrire dans un fichier
 
 // Mettez ici les URLs des pages de votre site que vous voulez inclure
 const URLS_A_SCRAPER = [
-
+    'https://vg-paradox.com/'
 ];
 
 async function scraperSite() {
